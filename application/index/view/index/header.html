@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>直播系统</title>
+
+    <!-- Bootstrap -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/style/index.css" rel="stylesheet">
+    <link href="__PUBLIC__/fonts/iconfont.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    {if(!$name)}
+    <div class="header">
+        <!-- Button trigger modal -->
+        <a type="button" class="" data-toggle="modal" data-target="#admin">
+            管理员登陆
+        </a>
+        <a type="button" class="" data-toggle="modal" data-target="#teacher">
+            教师登陆
+        </a>
+        <a type="button" class="" data-toggle="modal" data-target="#student">
+            学生登陆
+        </a>
+        <div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">管理员登陆</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="form" action="{:url('/index/index/teacher_login')}" novalidate method="POST">
+
+                            <div class="form-group">
+                                <input type="text" autocomplete="off" class="form-control" placeholder="管理员账号" name="admin_name" >
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" autocomplete="off" class="form-control" placeholder="密码" name="admin_password" >
+                            </div>
+
+                            <div class="form-group text-left mt-20" style="display: flex;justify-content: center;">
+                                <input type="hidden" class="form-control"  name="admin" value='1'>
+                                <input style="height: 40px;width: 100px;background-color: skyblue;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="teacher" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">教师登陆</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="form" action="{:url('/index/index/teacher_login')}" novalidate method="POST">
+
+                            <div class="form-group">
+                                <input type="text" autocomplete="off" class="form-control" placeholder="管理员账号" name="admin_name" >
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" autocomplete="off" class="form-control" placeholder="密码" name="admin_password" >
+                            </div>
+
+                            <div class="form-group text-left mt-20" style="display: flex;justify-content: center;align-items: center">
+                                <input type="hidden" class="form-control"  name="admin" value='0'>
+                                <input style="height: 40px;width: 100px;background-color: skyblue;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
+                                <a href="{:url('/index/index/teacher_to_register')}" style="color: #000;">去注册</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Large modal -->
+        <div class="modal fade" id="student" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">学生登陆</h4>
+                    </div>
+                    <div class="modal-body">
+                        student
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {/if}
+    {if($name)}
+    <div class="header">
+        <a href="#">你好,{$name}</a>
+        <a href="{:url('index/index/login_out')}">注销</a>
+    </div>
+    {/if}
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</body>
+</html>
