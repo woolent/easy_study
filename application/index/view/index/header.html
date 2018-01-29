@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>直播系统</title>
+    <title>教育直播系统</title>
 
     <!-- Bootstrap -->
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
@@ -21,16 +21,21 @@
 <body>
     {if(!$name)}
     <div class="header">
-        <!-- Button trigger modal -->
-        <a type="button" class="" data-toggle="modal" data-target="#admin">
-            管理员登陆
-        </a>
-        <a type="button" class="" data-toggle="modal" data-target="#teacher">
-            教师登陆
-        </a>
-        <a type="button" class="" data-toggle="modal" data-target="#student">
-            学生登陆
-        </a>
+        <!--<p class="title">教育直播系统</p>-->
+        <!--<p>-->
+            <a href="{:url('index/index')}">首页</a>
+            <!-- Button trigger modal -->
+            <a type="button" class="" data-toggle="modal" data-target="#admin">
+                管理员登陆
+            </a>
+            <a type="button" class="" data-toggle="modal" data-target="#teacher">
+                教师登陆
+            </a>
+            <a type="button" class="" data-toggle="modal" data-target="#student">
+                学生登陆
+            </a>
+        <!--</p>-->
+
         <div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -51,7 +56,7 @@
 
                             <div class="form-group text-left mt-20" style="display: flex;justify-content: center;">
                                 <input type="hidden" class="form-control"  name="admin" value='1'>
-                                <input style="height: 40px;width: 100px;background-color: skyblue;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
+                                <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
                             </div>
 
                         </form>
@@ -81,7 +86,7 @@
 
                             <div class="form-group text-left mt-20" style="display: flex;justify-content: center;align-items: center">
                                 <input type="hidden" class="form-control"  name="admin" value='0'>
-                                <input style="height: 40px;width: 100px;background-color: skyblue;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
+                                <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="登录">
                                 <a href="{:url('/index/index/teacher_to_register')}" style="color: #000;">去注册</a>
                             </div>
 
@@ -108,7 +113,8 @@
     {/if}
     {if($name)}
     <div class="header">
-        <a href="#">你好,{$name}</a>
+        <a href="{:url('index/index')}">首页</a>
+        <a href="{:url('index/index/role')}">你好,{$name}</a>
         <a href="{:url('index/index/login_out')}">注销</a>
     </div>
     {/if}
