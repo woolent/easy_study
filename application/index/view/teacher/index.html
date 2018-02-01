@@ -28,7 +28,7 @@
     <div class="info">
         <div class="detail">
             <div class="col-md-4 col-xs-4" style="text-align: center">
-                <img src="__PUBLIC__/images/teacher.jpg" style="width: 150px;border-radius: 50%;border: 1px solid #ddd;margin-bottom: 20px;">
+                <img src="__PUBLIC__/images/teacher.jpg" style="width: 150px;border-radius: 50%;border: 1px solid #ddd;">
                 <p style="margin-bottom: 20px;">
                     <a type="button" data-toggle="modal" data-target="#changemessage">
                         个人信息修改
@@ -73,6 +73,7 @@
                 </div>
             </div>
             <div class="col-md-8 col-xs-8">
+
                 <h4 style="color: red;margin-bottom: 20px;">设置课程信息</h4>
                 {if($class)}
                 <form name="form" action="{:url('index/teacher/addClass')}" novalidate method="POST">
@@ -107,29 +108,11 @@
                     </div>
                     <div class="form-group text-left mt-20" style="display: flex;justify-content: center;align-items: center">
                         <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff;margin-right: 10px;" type="submit" name="login_submit" value="确认添加">
-                        <p style="height: 40px;width: 100px;background-color: #ddd;border-radius: 5px;color: #fff;margin-right: 10px;text-align: center;line-height: 40px;margin-bottom: 0px;">点击进入直播</p>
+                        <a style="height: 40px;width: 100px;background-color: #ddd;border-radius: 5px;color: #fff;margin-right: 10px;text-align: center;line-height: 40px;">点击进入直播</a>
                     </div>
                 </form>
                 {/if}
             </div>
-            <form name="form" action="" novalidate method="POST" style="display: none">
-
-            <div class="form-group">
-                <p>用户名：</p><input type="text" autocomplete="off" class="form-control" placeholder="教师用户名" name="name" value="{$teacher['name']}">
-            </div>
-            <div class="form-group">
-                <p>真实姓名：</p><input type="text" autocomplete="off" class="form-control" placeholder="真实姓名" name="real_name" value="{$teacher['real_name']}">
-            </div>
-            <div class="form-group">
-                <p>密码：</p><input type="password" autocomplete="off" class="form-control" placeholder="密码" name="password" value="{$teacher['password']}">
-            </div>
-                <div class="form-group">
-                    <p>积分：</p><input type="text" disabled autocomplete="off" class="form-control" placeholder="密码" name="password" value="{$teacher['point']}">
-                </div>
-            <div class="form-group text-left mt-20" style="display: flex;justify-content: center;align-items: center">
-                <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff;margin-right: 10px;" type="submit" name="login_submit" value="保存修改">
-            </div>
-        </form>
         </div>
     </div>
 </div>

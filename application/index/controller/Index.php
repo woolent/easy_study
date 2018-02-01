@@ -10,12 +10,32 @@ class Index extends controller
     public function index()
     {
         //查询老师设置的课程信息和历史课程信息，传给页面显示出来
+        $sql = 'SELECT ss.id,ss.class_name,ss.teacher_id,ss.start_time,ss.point,ss.update_time,ss.url_id,ss.teacher_url,ss.student_token,ss.student_url,ss.help_token,ss.teacher_token,teacher.`name`,teacher.real_name FROM (SELECT cal.id,cal.class_name,cal.teacher_id,cal.start_time,cal.point,cal.update_time,cal.url_id,url.teacher_url,url.student_token,url.student_url,url.help_token,url.teacher_token FROM (SELECT class.id,class.class_name,class.teacher_id,class.start_time,class.point,class.update_time,turl.url_id FROM (select * from class_home where update_time in (select max(update_time) from class_home GROUP BY teacher_id)) as class LEFT JOIN teacher_url turl ON class.teacher_id = turl.teacher_id) cal'
+                .' LEFT JOIN url_home url ON cal.url_id = url.id) ss LEFT JOIN teacher ON ss.teacher_id = teacher.id';
+        $result = Db::query($sql);
+        $this->assign('data',$result);
+
         if(session('name')){
+            $role = session('role');
+            $id = session('id');
+            $class = Db::name('student_url')->where('student_id',$id)->select();
+            $array = array();
+            foreach($class as $cla){
+                array_push($array,$cla['class_id']);
+            }
+            if($role==2){
+                $student = Db::name('student')->where('id',$id)->find();
+                $this->assign('student',$student);
+            }
+            $this->assign('myclass',$array);
+            $this->assign('id',$id);
+            $this->assign('role',$role);
             $this->assign('name',session('name'));
         }else{
+            $this->assign('role','');
             $this->assign('name','');
         }
-        return view();
+        return $this->fetch();
     }
     //管理员在教师表中，属于特殊的教师，不做单独设置
     public function teacher_login(){
@@ -43,19 +63,29 @@ class Index extends controller
                 session('name',$name);
                 session('real_name',$result['real_name']);
                 session('point',$result['point']);
+                //获取教师对应的url
                 $url_id = Db::name('teacher_url')->where('teacher_id',$result['id'])->find()['url_id'];
-                $url = Db::name('url_home')->where('id',$url_id)->find()['teacher_url'];
+                $url = Db::name('url_home')->where('id',$url_id)->find();
+                session('teacher',$result);
+                session('url',$url['teacher_url']);
+                session('teacher_token',$url['teacher_token']);
+                //获取教师设置的课程信息
+                $class = Db::name('class_home')->where('teacher_id',$result['id'])->find();
+                if($class){
+                    session('class',$class);
+                    $this->assign('class',$class);
+                }else{
+                    session('class','');
+                    $this->assign('class',$class);
+                }
                 $this->assign('teacher',$result);
-                $this->assign('url',$url);
+                $this->assign('url',$url['teacher_url']);
+                $this->assign('token',$url['teacher_token']);
                 return $this->fetch();
             }else{
                 $this->error('登陆失败，用户名或密码错误');
             }
         }
-
-    }
-    //学生登陆
-    public function student_login(){
 
     }
     //跳转教师注册页面
@@ -67,7 +97,17 @@ class Index extends controller
         $id = $this->create_uuid();
         $name = $_POST['name'];
         $real_name = $_POST['real_name'];
-        $password = md5($_POST['password']);
+        $password = $_POST['password'];
+        if($name==''){
+            $this->error('注册失败，用户名不能为空','index/index/index','','1');
+        }
+        if($real_name==''){
+            $this->error('注册失败，真实姓名不能为空','index/index/index','','1');
+        }
+        if($password==''){
+            $this->error('注册失败，密码不能为空','index/index/index','','1');
+        }
+        $password = md5($password);
         $result = Db::name('url_home')->where('status','0')->find();
         if(!$result){
             $this->error('教师url分配失败，请联系管理员再试');
@@ -91,10 +131,6 @@ class Index extends controller
         }else{
             $this->error('注册失败，请检查');
         }
-    }
-    //学生注册
-    public function student_register(){
-
     }
     //判断身份（管理员1，教师0，学生2）
     public function role(){
