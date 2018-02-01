@@ -65,6 +65,9 @@ class Teacher extends Controller{
         if($point==''){
             $this->error('添加失败，所需积分不能为空','index/Teacher/index','','1');
         }
+        if($point<0){
+            $this->error('添加失败，积分不能为负','index/Teacher/index','','1');
+        }
         $time = time();
         //登录的教师id
         $teacher_id = session('teacher')['id'];
