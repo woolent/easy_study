@@ -1,0 +1,79 @@
+body {
+  background-color: #f2f2f2;
+}
+body a,
+body a:hover,
+body a:focus {
+  text-decoration: none;
+}
+body .content .header {
+  background-color: #000;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+body .content .header a {
+  color: #fff;
+  margin-left: 20px;
+}
+body .content .header a,
+body .content .header a:hover,
+body .content .header a:focus {
+  text-decoration: none;
+}
+body .content .header p {
+  color: #fff;
+  margin-bottom: 0px;
+}
+body .content .list {
+  margin: 0px 200px 0px 200px;
+}
+body .content .list .iconfont {
+  font-size: 23px;
+  color: skyblue;
+  background-color: #fff;
+  height: 50px;
+}
+body .content .list .live {
+  margin-top: 10px;
+}
+body .content .list .live a {
+  display: flex;
+  color: #000;
+  background-color: #fff;
+  align-items: center;
+  height: 150px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+body .content .list .live a img {
+  width: 100%;
+}
+body .content .list .live a:hover,
+body .content .list .live a:focus {
+  text-decoration: none;
+  color: skyblue;
+}
+body .content .list .live .live_pic {
+  width: 200px;
+  margin-right: 20px;
+}
+body .content .list .history ul {
+  margin-top: 10px;
+  background-color: #fff;
+  padding-left: 0px;
+}
+body .content .list .history ul li {
+  list-style: none;
+  padding: 5px 10px 5px 10px;
+  border-bottom: 1px solid #ddd;
+}
+body .content .info {
+  padding: 0px 200px;
+}
+body .content .info .detail {
+  margin-top: 100px;
+}

@@ -27,120 +27,133 @@
         <a href="{:url('index/index/login_out')}">注销</a>
     </div>
     <div class="detail">
-        <div class="change">
-            <button type="button" class="btn" data-toggle="modal" data-target="#admin">
-                添加url
-            </button>
-            <button type="button" class="btn" data-toggle="modal" data-target="#teacher">
-                修改教师积分
-            </button>
-            <button type="button" class="btn" data-toggle="modal" data-target="#student">
-                修改学生积分
-            </button>
-            <!-- 添加url-->
-            <div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">添加url</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form name="form" action="{:url('index/admin/addUrl')}" novalidate method="POST">
+        <!-- Nav tabs -->
+        <ul class="col-xs-3 col-md-3" role="tablist">
+            <li role="presentation" class="active"><a href="#url" aria-controls="url" role="tab" data-toggle="tab">url管理</a></li>
+            <li role="presentation"><a href="#teacher" aria-controls="teacher" role="tab" data-toggle="tab">教师积分管理</a></li>
+            <li role="presentation"><a href="#student" aria-controls="student" role="tab" data-toggle="tab">学生积分管理</a></li>
+        </ul>
 
-                                <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="教师url" name="teacher_url" >
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="教师口令" name="teacher_token" >
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="助教口令" name="help_token" >
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="学生url" name="student_url" >
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" autocomplete="off" class="form-control" placeholder="学生口令" name="student_token" >
-                                </div>
-                                <div class="form-group text-left mt-20" style="display: flex;justify-content: center;">
-                                    <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="添加">
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--修改教师积分-->
-            <div class="modal fade" id="teacher" tabindex="-1" role="dialog" aria-labelledby="">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">修改教师积分</h4>
-                        </div>
-                        <div class="modal-body" style="display: flex;justify-content: center;flex-direction: column;align-items: center">
-                            <form name="form" action="" novalidate method="POST" style="width: 200px;">
-                                <input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要增加的积分" name="add_teacher_point" >
-                                <input style="height: 40px;width: 100%;margin-bottom:10px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="增加">
-                            </form>
-                            <form name="form" action="" novalidate method="POST" style="width: 200px;">
-                                <input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要减少的积分" name="reduce_teacher_point" >
-                                <input style="height: 40px;width: 100%;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="减少">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--修改学生积分-->
-            <div class="modal fade" id="student" tabindex="-1" role="dialog" aria-labelledby="">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">修改学生积分</h4>
-                        </div>
-                        <div class="modal-body" style="display: flex;justify-content: center;flex-direction: column;align-items: center">
-                            <form name="form" action="" novalidate method="POST" style="width: 200px;">
-                                <input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要增加的积分" name="add_student_point" >
-                                <input style="height: 40px;width: 100%;margin-bottom:10px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="增加">
-                            </form>
-                            <form name="form" action="" novalidate method="POST" style="width: 200px;">
-                                <input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要减少的积分" name="reduce_student_point" >
-                                <input style="height: 40px;width: 100%;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="减少">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Tab panes -->
+        <div class="tab-content col-xs-9 col-md-9">
+            <div role="tabpanel" class="tab-pane active" id="url">url</div>
+            <div role="tabpanel" class="tab-pane" id="teacher">teacher</div>
+            <div role="tabpanel" class="tab-pane" id="student">student</div>
         </div>
-        <table>
-            <tr>
-                <th>所属教师</th>
-                <th>教师url</th>
-                <th>教师口令</th>
-                <th>助教口令</th>
-                <th>学生url</th>
-                <th>学生口令</th>
-            </tr>
-            {if($urls)}
-            {foreach($urls as $url)}
-            <tr>
-                <td>{$url['status']==0?'未分配':$url['name']}</td>
-                <td>{$url['teacher_url']}</td>
-                <td>{$url['teacher_token']}</td>
-                <td>{$url['help_token']}</td>
-                <td>{$url['student_url']}</td>
-                <td>{$url['student_token']}</td>
-            </tr>
-            {/foreach}
-            {/if}
-        </table>
+        <!--<div class="change">-->
+            <!--<button type="button" class="btn" data-toggle="modal" data-target="#admin">-->
+                <!--添加url-->
+            <!--</button>-->
+            <!--<button type="button" class="btn" data-toggle="modal" data-target="#teacher">-->
+                <!--修改教师积分-->
+            <!--</button>-->
+            <!--<button type="button" class="btn" data-toggle="modal" data-target="#student">-->
+                <!--修改学生积分-->
+            <!--</button>-->
+            <!--&lt;!&ndash; 添加url&ndash;&gt;-->
+            <!--<div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="">-->
+                <!--<div class="modal-dialog" role="document">-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            <!--<h4 class="modal-title">添加url</h4>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body">-->
+                            <!--<form name="form" action="{:url('index/admin/addUrl')}" novalidate method="POST">-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" autocomplete="off" class="form-control" placeholder="教师url" name="teacher_url" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" autocomplete="off" class="form-control" placeholder="教师口令" name="teacher_token" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" autocomplete="off" class="form-control" placeholder="助教口令" name="help_token" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" autocomplete="off" class="form-control" placeholder="学生url" name="student_url" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<input type="text" autocomplete="off" class="form-control" placeholder="学生口令" name="student_token" >-->
+                                <!--</div>-->
+                                <!--<div class="form-group text-left mt-20" style="display: flex;justify-content: center;">-->
+                                    <!--<input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="添加">-->
+                                <!--</div>-->
+                            <!--</form>-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;修改教师积分&ndash;&gt;-->
+            <!--<div class="modal fade" id="teacher" tabindex="-1" role="dialog" aria-labelledby="">-->
+                <!--<div class="modal-dialog" role="document">-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            <!--<h4 class="modal-title">修改教师积分</h4>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body" style="display: flex;justify-content: center;flex-direction: column;align-items: center">-->
+                            <!--<form name="form" action="" novalidate method="POST" style="width: 200px;">-->
+                                <!--<input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要增加的积分" name="add_teacher_point" >-->
+                                <!--<input style="height: 40px;width: 100%;margin-bottom:10px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="增加">-->
+                            <!--</form>-->
+                            <!--<form name="form" action="" novalidate method="POST" style="width: 200px;">-->
+                                <!--<input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要减少的积分" name="reduce_teacher_point" >-->
+                                <!--<input style="height: 40px;width: 100%;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="减少">-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;修改学生积分&ndash;&gt;-->
+            <!--<div class="modal fade" id="student" tabindex="-1" role="dialog" aria-labelledby="">-->
+                <!--<div class="modal-dialog" role="document">-->
+                    <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                            <!--<h4 class="modal-title">修改学生积分</h4>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body" style="display: flex;justify-content: center;flex-direction: column;align-items: center">-->
+                            <!--<form name="form" action="" novalidate method="POST" style="width: 200px;">-->
+                                <!--<input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要增加的积分" name="add_student_point" >-->
+                                <!--<input style="height: 40px;width: 100%;margin-bottom:10px;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="增加">-->
+                            <!--</form>-->
+                            <!--<form name="form" action="" novalidate method="POST" style="width: 200px;">-->
+                                <!--<input style="margin-bottom: 10px" type="text" autocomplete="off" class="form-control" placeholder="需要减少的积分" name="reduce_student_point" >-->
+                                <!--<input style="height: 40px;width: 100%;background-color: #317EF3;border-radius: 5px;color: #fff" type="submit" name="login_submit" value="减少">-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<th>所属教师</th>-->
+                <!--<th>教师url</th>-->
+                <!--<th>教师口令</th>-->
+                <!--<th>助教口令</th>-->
+                <!--<th>学生url</th>-->
+                <!--<th>学生口令</th>-->
+            <!--</tr>-->
+            <!--{if($urls)}-->
+            <!--{foreach($urls as $url)}-->
+            <!--<tr>-->
+                <!--<td>{$url['status']==0?'未分配':$url['name']}</td>-->
+                <!--<td>{$url['teacher_url']}</td>-->
+                <!--<td>{$url['teacher_token']}</td>-->
+                <!--<td>{$url['help_token']}</td>-->
+                <!--<td>{$url['student_url']}</td>-->
+                <!--<td>{$url['student_token']}</td>-->
+            <!--</tr>-->
+            <!--{/foreach}-->
+            <!--{/if}-->
+        <!--</table>-->
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
