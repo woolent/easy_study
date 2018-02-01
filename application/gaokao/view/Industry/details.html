@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<input type="text">
+		<button>search</button>
+	</div>
+	<div>
+		{volist name="info.table_List" id="li"}
+		
+		<li><a href="{:url('gaokao/Occupation/details',['occupation_id'=>$li.occupation_id])}">{$li.occupation_name}</a></li>
+		{/volist}
+	</div>
+
+</body>
+</html>
