@@ -103,7 +103,7 @@
                         <td>{$url['student_token']}</td>
                         <td>{$url['status']==0?'未分配':$url['name']}</td>
                         <td>
-                            <button style="background-color: #317EF3;color: #fff;border-radius: 5px;" type="button" class="btn" data-toggle="modal" data-target="#{$url['url_id']}">修改</button>
+                            <button style="background-color: #317EF3;color: #fff;border-radius: 5px;" type="button" data-toggle="modal" data-target="#{$url['url_id']}">修改</button>
                             <div class="modal fade" id="{$url['url_id']}" tabindex="-1" role="dialog" aria-labelledby="">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button style="background-color: #317EF3;color: #fff;border-radius: 5px;" type="button" class="btn" data-toggle="modal" data-target="#{$url['url_id'].'delete'}">删除</button>
+                            <button style="background-color: #317EF3;color: #fff;border-radius: 5px;" type="button" data-toggle="modal" data-target="#{$url['url_id'].'delete'}">删除</button>
                             <div class="modal fade" id="{$url['url_id'].'delete'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content" style="height: 100px;display: flex;align-items: center;justify-content: center">
@@ -157,7 +157,39 @@
                 </table>
             </div>
             <div role="tabpanel" class="tab-pane" id="teacher">
-
+                <table>
+                    <tr>
+                        <th>教师id</th>
+                        <th>用户名</th>
+                        <th>真实姓名</th>
+                        <th>积分</th>
+                        <th>操作</th>
+                    </tr>
+                    {if($teacher)}
+                    {foreach($teacher as $tea)}
+                    <tr>
+                        <td>{$tea['id']}</td>
+                        <td>{$tea['name']}</td>
+                        <td>{$tea['real_name']}</td>
+                        <td>{$tea['point']}</td>
+                        <td>
+                            <button type="button" data-toggle="modal" data-target="#{$tea['id'].'teacher'}" style="background-color: #317EF3;color: #fff;border-radius: 5px;">修改</button>
+                            <div class="modal fade" id="{$tea['id'].'teacher'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content" style="height: 100px;display: flex;align-items: center;justify-content: center">
+                                        <a style="background-color: #317EF3;color: #fff;padding: 5px;border-radius: 5px;" href="{:url('index/admin/deleteUrl',['id'=>$url['url_id']])}">点击确认删除</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    {/if}
+                    {if(!$teacher)}
+                        <tr><td colspan="5">暂无数据</td></tr>
+                    {/if}
+                </table>
             </div>
             <div role="tabpanel" class="tab-pane" id="student">student</div>
         </div>
