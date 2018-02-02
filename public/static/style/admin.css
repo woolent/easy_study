@@ -1,17 +1,34 @@
+.content .detail {
+  padding: 0px 100px;
+  margin-top: 50px;
+  display: flex;
+}
 .content .detail ul {
+  background-color: #fff;
   list-style: none;
+  padding: 0px;
+  width: 200px;
+  margin-bottom: 0px;
 }
 .content .detail ul li {
-  height: 60px;
+  height: 40px;
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .content .detail ul .active {
-  background-color: #0099CB;
-  font-size: 16px;
-  font-weight: bold;
+  background-color: #0088CC;
+  font-size: 14px;
 }
 .content .detail ul .active a {
   color: #fff;
+  border-radius: 5px;
+}
+.content .detail .tab-content {
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 20px;
 }
 .content .detail .change {
   height: 60px;

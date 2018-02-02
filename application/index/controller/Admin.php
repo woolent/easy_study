@@ -12,11 +12,18 @@ class Admin extends Controller{
     //管理员信息页
     public function index(){
         //读取url表中所有的url数据
-        $sql = 'select * from (select url.teacher_url,url.student_token,url.student_url,url.help_token,url.`status`,url.teacher_token,turl.teacher_id,turl.url_id from url_home url LEFT JOIN teacher_url turl ON url.id=turl.url_id) t LEFT JOIN teacher ON t.teacher_id = teacher.id';
+        $sql = 'select * from (select url.teacher_url,url.student_token,url.student_url,url.help_token,url.`status`,url.teacher_token,turl.teacher_id,url.id as url_id from url_home url LEFT JOIN teacher_url turl ON url.id=turl.url_id) t LEFT JOIN teacher ON t.teacher_id = teacher.id';
         $result = Db::query($sql);
 //        $result = Db::table('url_home url,teacher,teacher_url turl');
         $this->assign('urls',$result);
         $this->assign('name',session('name'));
+
+        //查询老师的信息
+        $teacher = Db::name('teacher')->select();
+        $this->assign('teacher',$teacher);
+        //查询学生的信息
+        $student = Db::name('student')->select();
+        $this->assign('student',$student);
         return $this->fetch();
     }
     //添加url
@@ -27,10 +34,66 @@ class Admin extends Controller{
         $help_token = $_POST['help_token'];
         $student_url = $_POST['student_url'];
         $student_token = $_POST['student_token'];
+        if($teacher_url==''){
+            $this->error('添加失败，教师url不能为空');
+        }
+        if($teacher_token==''){
+            $this->error('添加失败，教师口令不能为空');
+        }
+        if($help_token==''){
+            $this->error('添加失败，助教口令不能为空');
+        }
+        if($student_url==''){
+            $this->error('添加失败，学生url不能为空');
+        }
+        if($student_token==''){
+            $this->error('添加失败，学生口令不能为空');
+        }
         if(Db::name('url_home')->insert(['id'=>$id,'teacher_url'=>$teacher_url,'teacher_token'=>$teacher_token,'help_token'=>$help_token,'student_url'=>$student_url,'student_token'=>$student_token,'status'=>'0'])){
             $this->success('添加成功','index/admin/index','','1');
         }else{
             $this->error('添加失败，请检查数据');
+        }
+    }
+    //修改添加的url
+    public function updateUrl(){
+        $id = $_POST['url_id'];
+        $teacher_url = $_POST['teacher_url'];
+        $teacher_token = $_POST['teacher_token'];
+        $help_token = $_POST['help_token'];
+        $student_url = $_POST['student_url'];
+        $student_token = $_POST['student_token'];
+        if($teacher_url==''){
+            $this->error('添加失败，教师url不能为空');
+        }
+        if($teacher_token==''){
+            $this->error('添加失败，教师口令不能为空');
+        }
+        if($help_token==''){
+            $this->error('添加失败，助教口令不能为空');
+        }
+        if($student_url==''){
+            $this->error('添加失败，学生url不能为空');
+        }
+        if($student_token==''){
+            $this->error('添加失败，学生口令不能为空');
+        }
+        $result = Db::name('url_home')->where('id',$id)->find();
+        if($result['teacher_url']==$teacher_url && $result['teacher_token']==$teacher_token && $result['help_token']==$help_token && $result['student_url']==$student_url && $result['student_token']==$student_token){
+            $this->success('未做修改','idnex/admin/index','','1');
+        }else if(Db::name('url_home')->where('id',$id)->update(['teacher_url'=>$teacher_url,'teacher_token'=>$teacher_token,'help_token'=>$help_token,'student_url'=>$student_url,'student_token'=>$student_token])){
+            $this->success('修改成功','index/admin/index','','1');
+        }else{
+            $this->error('添加失败，请检查数据');
+        }
+    }
+    //删除url
+    public function deleteUrl($id){
+        if(Db::name('url_home')->where('id',$id)->find()['status']==1){
+            $this->error('url正在使用，无法删除');
+        }
+        if(Db::name('url_home')->where('id',$id)->delete()){
+            $this->success('删除成功','index/admin/index','','1');
         }
     }
     //增加教师积分
