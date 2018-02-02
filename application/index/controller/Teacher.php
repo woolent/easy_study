@@ -15,9 +15,12 @@ class Teacher extends Controller{
 
         $url =  session('url');
         $token = session('teacher_token');
-        $class = Db::name('class_home')->where('teacher_id',$teacher['id'])->find();
-        if($class){
-            $this->assign('class',$class);
+        //查询最新的class数据
+//        $class = Db::name('class_home')->where('teacher_id',$teacher['id'])->find();
+        $sql = "select * from class_home where teacher_id ='".$teacher['id']."' order by update_time desc";
+        $classes = Db::query($sql);
+        if($classes){
+            $this->assign('class',$classes[0]);
         }else{
             $this->assign('class','');
         }
