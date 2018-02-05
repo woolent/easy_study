@@ -1,6 +1,9 @@
 body {
   background-color: #f2f2f2;
 }
+body a {
+  cursor: pointer;
+}
 body a,
 body a:hover,
 body a:focus {
@@ -70,6 +73,9 @@ body .content .list .history ul li {
   list-style: none;
   padding: 5px 10px 5px 10px;
   border-bottom: 1px solid #ddd;
+}
+body .content .list .history ul li a {
+  cursor: pointer;
 }
 body .content .info {
   padding: 0px 200px;

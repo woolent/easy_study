@@ -17,7 +17,7 @@
                 {if($role==2)}
                     {foreach($data as $da)}
                         {if(count($myclass)==0)}
-                        <a type="button" data-toggle="modal" data-target="#{$da['teacher_id']}">
+                        <a data-toggle="modal" data-target="#{$da['teacher_id']}" style="cursor: pointer">
                             <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
                             <div class="live_txt">
                                 <p>课程名称：{$da['class_name']}</p>
@@ -37,7 +37,7 @@
                         {/if}
                         {if(count($myclass)!=0)}
                             {if(in_array($da['id'],$myclass))}
-                                <a target="_blank" href="{$da['student_url'].'visible=true&nickname='.$name.'&token='.$da['student_token']}">
+                                <a target="_blank" href="{$da['student_url'].'visible=true&nickname='.$name.'&token='.$da['student_token']}" style="cursor: pointer">
                                     <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
                                     <div class="live_txt">
                                         <p>课程名称：{$da['class_name']}</p>
@@ -47,7 +47,7 @@
                                 </a>
                             {/if}
                             {if(!in_array($da['id'],$myclass))}
-                                <a type="button" data-toggle="modal" data-target="#{$da['id']}">
+                                <a data-toggle="modal" data-target="#{$da['id']}" style="cursor: pointer">
                                     <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
                                     <div class="live_txt">
                                         <p>课程名称：{$da['class_name']}</p>
@@ -70,7 +70,7 @@
                 {/if}
                 {if($role!=2)}
                     {foreach($data as $da)}
-                    <a>
+                    <a style="cursor: pointer">
                         <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
                         <div class="live_txt">
                             <p>课程名称：{$da['class_name']}</p>
@@ -86,7 +86,7 @@
         {if($role==2)}
             <div class="col-md-4 col-xs-4 history" style="text-align: center">
                 <div style="height: 50px;line-height: 50px;padding-left: 10px;font-size: 23px;background-color: #fff">学生信息</div>
-                <div style="background-color: #fff;padding-left: 10px;">
+                <div style="background-color: #fff;padding-left: 10px;padding-bottom: 10px;margin-bottom: 10px;">
                 <p><span>用户名：</span>{$student['name']}</p>
                 <p><span>真实姓名：</span>{$student['real_name']}</p>
                 <p><span>积分：</span>{$student['point']}</p>
