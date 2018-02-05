@@ -30,6 +30,13 @@
   width: 100%;
   padding: 20px;
 }
+.content .detail .tab-content .tab-pane p {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+  margin: -20px -20px 20px -20px;
+  padding: 0px 20px;
+}
 .content .detail .change {
   height: 60px;
   display: flex;

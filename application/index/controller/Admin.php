@@ -96,22 +96,92 @@ class Admin extends Controller{
             $this->success('删除成功','index/admin/index','','1');
         }
     }
-    //增加教师积分
-    public function addTeacherPoint(){
-        $addPoint = $_POST['add_teacher_point'];
 
+    /**
+     * 增加教师积分
+     * @param $id
+     */
+    public function addTeacherPoint($id){
+        //需要增加的积分
+        $addPoint = $_POST['add_point'];
+        if($addPoint<0){
+            $this->error('输入积分不能为负');
+        }else if($addPoint==0){
+            $this->error('积分不能为零');
+        }else{
+            $teacher = Db::name('teacher')->where('id',$id)->find();
+            $point = $teacher['point']+$addPoint;
+            if(Db::name('teacher')->where('id',$id)->update(['point'=>$point])){
+                $this->success('增加成功，用户需要重新登录以查看最新积分');
+            }else{
+                $this->error('增加失败，联系开发人员查看');
+            }
+        }
     }
     //减少教师积分
-    public function reduceTeacherPoint(){
-
+    public function reduceTeacherPoint($id){
+        //需要扣除的积分
+        $reducePoint = $_POST['reduce_point'];
+        if($reducePoint<0){
+            $this->error('输入积分不能为负');
+        }else if($reducePoint==0){
+            $this->error('积分不能为零');
+        }else {
+            $teacher = Db::name('teacher')->where('id',$id)->find();
+            //教师拥有的积分
+            $point = $teacher['point'];
+            if($point<$reducePoint){
+                $this->error('所需积分不足，请先充值');
+            }else{
+                $point = $point-$reducePoint;
+                if(Db::name('teacher')->where('id',$id)->update(['point'=>$point])){
+                    $this->success('扣除成功，用户需要重新登录以查看最新积分');
+                }else{
+                    $this->error('扣除失败，联系开发人员查看');
+                }
+            }
+        }
     }
     //增加学生积分
-    public function addStudentPoint(){
-
+    public function addStudentPoint($id){
+        //需要增加的积分
+        $addPoint = $_POST['add_point'];
+        if($addPoint<0){
+            $this->error('输入积分不能为负');
+        }else if($addPoint==0){
+            $this->error('积分不能为零');
+        }else{
+            $student = Db::name('student')->where('id',$id)->find();
+            $point = $student['point']+$addPoint;
+            if(Db::name('student')->where('id',$id)->update(['point'=>$point])){
+                $this->success('增加成功，用户需要重新登录以查看最新积分');
+            }else{
+                $this->error('增加失败，联系开发人员查看');
+            }
+        }
     }
     //减少学生积分
-    public function reduceStudentPoint(){
-
+    public function reduceStudentPoint($id){
+        $reducePoint = $_POST['reduce_point'];
+        if($reducePoint<0){
+            $this->error('输入积分不能为负');
+        }else if($reducePoint==0){
+            $this->error('积分不能为零');
+        }else {
+            $student = Db::name('student')->where('id',$id)->find();
+            //教师拥有的积分
+            $point = $student['point'];
+            if($point<$reducePoint){
+                $this->error('所需积分不足，请先充值');
+            }else{
+                $point = $point-$reducePoint;
+                if(Db::name('student')->where('id',$id)->update(['point'=>$point])){
+                    $this->success('扣除成功，用户需要重新登录以查看最新积分');
+                }else{
+                    $this->error('扣除失败，联系开发人员查看');
+                }
+            }
+        }
     }
     //随机生成id
     public static function create_uuid($prefix = ""){    //可以指定前缀
