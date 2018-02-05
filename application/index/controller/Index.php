@@ -69,11 +69,14 @@ class Index extends controller
                 session('teacher',$result);
                 session('url',$url['teacher_url']);
                 session('teacher_token',$url['teacher_token']);
-                //获取教师设置的课程信息
-                $class = Db::name('class_home')->where('teacher_id',$result['id'])->find();
-                if($class){
-                    session('class',$class);
-                    $this->assign('class',$class);
+                //获取教师设置的课程信息（读取最新的课程信息）
+//                $class = Db::name('class_home')->where('teacher_id',$result['id'])->select();
+                $sql = "select * from class_home where teacher_id ='".$result['id']."' order by update_time desc";
+                $classes = Db::query($sql);
+
+                if($classes){
+                    session('class',$classes[0]);
+                    $this->assign('class',$classes[0]);
                 }else{
                     session('class','');
                     $this->assign('class',$class);
