@@ -17,17 +17,47 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="__STATIC__/css/style.css">
 </head>
 <body style="background-color: #fff">
 <div class="content">
     <div class="header">
-        <a href="{:url('index/index')}">首页</a>
-        <a href="#">你好,{$teacher['name']}</a>
-        <a href="{:url('index/index/login_out')}">注销</a>
+        <a class="open" id="open-button" style="margin-left: 20px"><img src="__STATIC__/images/open.png"></a>
+        <div>
+            <a href="{:url('index/index')}">首页</a>
+            <a href="#">你好,{$teacher['name']}</a>
+            <a href="{:url('index/index/login_out')}" style="margin-right: 10px;">注销</a>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #583e7e" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav" style="padding-left: 20px;padding-top: 20px;">
+                <img src="__PUBLIC__/images/teacher.jpg" style="width: 150px;border-radius: 50%;border: 1px solid #ddd;margin-bottom: 20px;">
+                <p style="color: #fff"><span>用户名：</span><span>{$teacher['name']}</span></p>
+                <p style="color: #fff"><span>真实姓名：</span><span>{$teacher['real_name']}</span></p>
+                <p style="color: #fff"><span>积分：</span><span>{$teacher['point']}</span></p>
+                <p style="color: #fff"><span>登录口令：</span><span>{$token}</span></p>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
     <div class="info">
         <div class="detail">
-            <div class="col-md-4 col-xs-4" style="text-align: center">
+            <div class="col-md-4 col-sm-4 col-xs-12 teacher" style="text-align: center">
                 <img src="__PUBLIC__/images/teacher.jpg" style="width: 150px;border-radius: 50%;border: 1px solid #ddd;">
                 <p style="margin-bottom: 20px;">
                     <a type="button" data-toggle="modal" data-target="#changemessage">
@@ -72,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-xs-8">
+            <div class="col-md-8 col-sm-8 col-xs-12">
 
                 <h4 style="color: red;margin-bottom: 20px;">设置课程信息</h4>
                 {if($class)}
@@ -120,5 +150,35 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+            isClosed = false;
+
+        trigger.click(function () {
+            hamburger_cross();
+        });
+
+        function hamburger_cross() {
+
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+            } else {
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+            }
+        }
+
+        $('[data-toggle="offcanvas"]').click(function () {
+            $('#wrapper').toggleClass('toggled');
+        });
+    });
+</script>
 </body>
 </html>

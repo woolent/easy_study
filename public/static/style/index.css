@@ -9,14 +9,26 @@ body a:hover,
 body a:focus {
   text-decoration: none;
 }
+@media screen and (min-width: 768px) {
+  body .content .header .open {
+    display: none;
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body .content .header {
+    justify-content: space-between !important;
+    padding-right: 0px;
+  }
+}
 body .content .header {
   background-color: #000;
   height: 50px;
   display: flex;
+  display: -webkit-flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 200px;
-  padding-left: 200px;
+  padding-right: 20px;
 }
 body .content .header a {
   color: #fff;
@@ -31,9 +43,6 @@ body .content .header p {
   color: #fff;
   margin-bottom: 0px;
 }
-body .content .list {
-  margin: 0px 200px 0px 200px;
-}
 body .content .list .iconfont {
   font-size: 23px;
   color: skyblue;
@@ -45,6 +54,7 @@ body .content .list .live {
 }
 body .content .list .live a {
   display: flex;
+  display: -webkit-flex;
   color: #000;
   background-color: #fff;
   align-items: center;
@@ -60,26 +70,76 @@ body .content .list .live a:focus {
   text-decoration: none;
   color: skyblue;
 }
-body .content .list .live .live_pic {
-  width: 200px;
-  margin-right: 20px;
+@media screen and (min-width: 769px) {
+  body .content .list .live .live_pic {
+    width: 200px;
+    margin-right: 20px;
+    padding: 0px;
+  }
 }
-body .content .list .history ul {
-  margin-top: 10px;
-  background-color: #fff;
-  padding-left: 0px;
+@media screen and (min-width: 769px) {
+  body .content .list .history ul {
+    margin-top: 10px;
+    background-color: #fff;
+    padding-left: 0px;
+  }
+  body .content .list .history ul li {
+    list-style: none;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  body .content .list .history ul li a {
+    cursor: pointer;
+  }
 }
-body .content .list .history ul li {
-  list-style: none;
-  padding: 5px 10px 5px 10px;
-  border-bottom: 1px solid #ddd;
+@media screen and (max-width: 768px) {
+  body .content .list .history {
+    margin-top: 20px;
+    padding: 0px;
+  }
+  body .content .list .history ul {
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 5px 10px;
+  }
+  body .content .list .history ul li {
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0px;
+  }
+  body .content .list .history ul li a {
+    cursor: pointer;
+  }
+  body .content .list .student {
+    display: none;
+  }
 }
-body .content .list .history ul li a {
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  body .content .info {
+    padding: 0px!important;
+  }
+  body .content .info .detail {
+    margin-top: 20px!important;
+  }
+  body .content .info .detail .teacher {
+    display: none;
+  }
 }
 body .content .info {
   padding: 0px 200px;
 }
 body .content .info .detail {
   margin-top: 100px;
+}
+@media screen and (max-width: 768px) {
+  body .content .list a .live_pic {
+    margin-right: 10px!important;
+    padding: 0px;
+  }
+  body .content .list a .live_txt {
+    padding: 0px;
+  }
+  body .content .list a .live_txt P {
+    display: block;
+  }
 }

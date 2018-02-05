@@ -8,18 +8,18 @@
     <title>教育直播系统</title>
 </head>
 <body>
-<div class="content">
+<div class="content container-fluid" style="padding: 0px;">
     {include file='index/header' /}
-    <div class="row list">
-        <div class="col-md-8 col-xs-8" style="padding: 0px 5px">
-            <div class="iconfont icon-zhibo" style="height: 50px;line-height: 50px;padding-left: 10px;">正在直播</div>
+    <div class="list row" style="margin: 0px;">
+        <div class="col-md-8 col-sm-8 col-xs-12" style="padding: 0px">
+            <div class="iconfont icon-zhibo" style="height: 50px;line-height: 50px;padding-left: 20px;">正在直播</div>
             <div class="live">
                 {if($role==2)}
                     {foreach($data as $da)}
                         {if(count($myclass)==0)}
                         <a data-toggle="modal" data-target="#{$da['teacher_id']}" style="cursor: pointer">
-                            <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
-                            <div class="live_txt">
+                            <div class="live_pic col-xs-5"><img src="__PUBLIC__/images/nopic.jpg" /></div>
+                            <div class="live_txt col-xs-7">
                                 <p>课程名称：{$da['class_name']}</p>
                                 <p>主讲教师：{$da['name']}</p>
                                 <p>开始时间：{$da['start_time']}</p>
@@ -27,7 +27,7 @@
                         </a>
                             <div class="modal fade" id="{$da['teacher_id']}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                 <div class="modal-dialog modal-sm" role="document">
-                                    <div class="modal-content" style="height: 150px;width: 300px;display: flex;flex-direction: column;align-items: center;justify-content: center">
+                                    <div class="modal-content" style="height: 150px;display: flex; display: -webkit-flex;flex-direction: column;align-items: center;justify-content: center">
                                         <p>需要积分:{$da['point']}</p>
                                         <a style="background-color:#317EF3;color:#fff;height: 30px;width: 80px;" href="{:url('/index/student/pay',['point'=>$da['point'],'class_id'=>$da['id'],'teacher_id'=>$da['teacher_id']])}">点击确定</a>
                                         <p style="font-size: 12px;color: red;margin-top: 10px;">可联系客服进行积分充值</p>
@@ -38,8 +38,8 @@
                         {if(count($myclass)!=0)}
                             {if(in_array($da['id'],$myclass))}
                                 <a target="_blank" href="{$da['student_url'].'visible=true&nickname='.$name.'&token='.$da['student_token']}" style="cursor: pointer">
-                                    <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
-                                    <div class="live_txt">
+                                    <div class="live_pic col-xs-5"><img src="__PUBLIC__/images/nopic.jpg" /></div>
+                                    <div class="live_txt col-xs-7">
                                         <p>课程名称：{$da['class_name']}</p>
                                         <p>主讲教师：{$da['name']}</p>
                                         <p>开始时间：{$da['start_time']}</p>
@@ -48,8 +48,8 @@
                             {/if}
                             {if(!in_array($da['id'],$myclass))}
                                 <a data-toggle="modal" data-target="#{$da['id']}" style="cursor: pointer">
-                                    <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
-                                    <div class="live_txt">
+                                    <div class="live_pic col-xs-5"><img src="__PUBLIC__/images/nopic.jpg" /></div>
+                                    <div class="live_txt col-xs-7">
                                         <p>课程名称：{$da['class_name']}</p>
                                         <p>主讲教师：{$da['name']}</p>
                                         <p>开始时间：{$da['start_time']}</p>
@@ -57,7 +57,7 @@
                                 </a>
                                 <div class="modal fade" id="{$da['id']}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                     <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content" style="height: 150px;width: 300px;display: flex;flex-direction: column;align-items: center;justify-content: center">
+                                        <div class="modal-content" style="height: 150px;display: flex; display: -webkit-flex;flex-direction: column;align-items: center;justify-content: center">
                                             <p>需要积分:{$da['point']}</p>
                                             <a style="background-color:#317EF3;color:#fff;height: 30px;width: 80px;" href="{:url('/index/student/pay',['point'=>$da['point'],'class_id'=>$da['id'],'teacher_id'=>$da['teacher_id']])}">点击确定</a>
                                             <p style="font-size: 12px;color: red;margin-top: 10px;">可联系客服进行积分充值</p>
@@ -71,8 +71,10 @@
                 {if($role!=2)}
                     {foreach($data as $da)}
                     <a style="cursor: pointer">
-                        <div class="live_pic"><img src="__PUBLIC__/images/nopic.jpg" /></div>
-                        <div class="live_txt">
+                        <div class="live_pic col-xs-5">
+                            <img src="__PUBLIC__/images/nopic.jpg" />
+                        </div>
+                        <div class="live_txt col-xs-7">
                             <p>课程名称：{$da['class_name']}</p>
                             <p>主讲教师：{$da['name']}</p>
                             <p>开始时间：{$da['start_time']}</p>
@@ -84,7 +86,7 @@
 
         </div>
         {if($role==2)}
-            <div class="col-md-4 col-xs-4 history" style="text-align: center">
+            <div class="col-md-4 col-sm-4 col-xs-12 history student" style="text-align: center">
                 <div style="height: 50px;line-height: 50px;padding-left: 10px;font-size: 23px;background-color: #fff">学生信息</div>
                 <div style="background-color: #fff;padding-left: 10px;padding-bottom: 10px;margin-bottom: 10px;">
                 <p><span>用户名：</span>{$student['name']}</p>
@@ -93,7 +95,7 @@
                 </div>
             </div>
         {/if}
-        <div class="col-md-4 col-xs-4 history">
+        <div class="col-md-4 col-sm-4 col-xs-12 history">
             <div class="iconfont icon-zhibo" style="height: 50px;line-height: 50px;padding-left: 10px;">历史回顾</div>
             <ul>
                <li>
@@ -120,5 +122,8 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="static/js/bootstrap.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>

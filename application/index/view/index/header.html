@@ -8,17 +8,17 @@
     <title>教育直播系统</title>
 
     <!-- Bootstrap -->
-    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__PUBLIC__/style/index.css" rel="stylesheet">
-    <link href="__PUBLIC__/fonts/iconfont.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/style/index.css" rel="stylesheet">
+    <link href="__STATIC__/fonts/iconfont.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="__STATIC__/css/style.css">
 </head>
-<body>
     {if(!$name)}
     <div class="header">
         <!--<p class="title">教育直播系统</p>-->
@@ -130,15 +130,84 @@
 
     {if($name)}
         <div class="header">
+            <a class="open" id="open-button" style="margin-left: 20px"><img src="__STATIC__/images/open.png"></a>
+            <div>
             <a href="{:url('index/index')}">首页</a>
             <a href="{:url('index/index/role')}">你好,{$name}</a>
             <a href="{:url('index/index/login_out')}">注销</a>
+            </div>
         </div>
+<div id="wrapper">
+    <div class="overlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #583e7e" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-brand" style="background-color: #583e7e">
+                <a href="#">
+                    个人信息
+                </a>
+            </li>
+            {if($role==2)}
+            <div style="padding-left: 30px;color: #fff">
+                <p><span>用户名：</span>{$student['name']}</p>
+                <p><span>真实姓名：</span>{$student['real_name']}</p>
+                <p><span>积分：</span>{$student['point']}</p>
+            </div>
+            {/if}
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+    </div>
+    
+    <!-- /#page-content-wrapper -->
+
+</div>
     {/if}
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script src="__STATIC__/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+            isClosed = false;
+
+        trigger.click(function () {
+            hamburger_cross();
+        });
+
+        function hamburger_cross() {
+
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+            } else {
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+            }
+        }
+
+        $('[data-toggle="offcanvas"]').click(function () {
+            $('#wrapper').toggleClass('toggled');
+        });
+    });
+</script>
+
 </body>
 </html>

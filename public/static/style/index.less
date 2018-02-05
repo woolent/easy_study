@@ -5,16 +5,31 @@ body{
   a,a:hover,a:focus{
     text-decoration: none;
   }
+
   background-color: #f2f2f2;
   .content{
+    @media screen and (min-width: 768px){
+      .header{
+        .open{
+          display: none;
+          margin-left: 20px;
+        }
+      }
+    }
+    @media screen and (max-width: 768px){
+      .header{
+        justify-content: space-between!important;
+        padding-right: 0px;
+      }
+    }
     .header{
       background-color: #000;
       height: 50px;
       display: flex;
+      display: -webkit-flex;
       align-items: center;
       justify-content: flex-end;
-      padding-right: 200px;
-      padding-left: 200px;
+      padding-right: 20px;
       a{
         color: #fff;
         margin-left: 20px;
@@ -29,7 +44,6 @@ body{
       }
     }
     .list{
-      margin: 0px 200px 0px 200px;
       .iconfont{
         font-size: 23px;
         color: skyblue;
@@ -40,6 +54,7 @@ body{
         margin-top: 10px;
         a{
           display: flex;
+          display: -webkit-flex;
           color: #000;
           background-color: #fff;
           align-items: center;
@@ -54,32 +69,93 @@ body{
           text-decoration: none;
           color: skyblue;
         }
-        .live_pic{
-          width: 200px;
-          margin-right: 20px;
+        @media screen and (min-width: 769px){
+          .live_pic{
+            width: 200px;
+            margin-right: 20px;
+            padding: 0px;
+          }
+        }
+
+      }
+      @media screen and (min-width: 769px){
+        .history{
+          ul{
+            margin-top: 10px;
+            background-color: #fff;
+            padding-left: 0px;
+            li{
+              list-style: none;
+              padding: 5px 10px 5px 10px;
+              border-bottom: 1px solid #ddd;
+              a{
+                cursor: pointer;
+              }
+            }
+
+          }
+        }
+
+      }
+      @media screen and (max-width: 768px){
+        .history{
+          margin-top: 20px;
+          padding: 0px;
+          ul{
+            margin-top: 10px;
+            background-color: #fff;
+            padding: 5px 10px;
+            li{
+              list-style: none;
+              border-bottom: 1px solid #ddd;
+              padding: 10px 0px;
+              a{
+                cursor: pointer;
+              }
+            }
+
+          }
+        }
+        .student{
+          display: none;
         }
       }
-      .history{
-        ul{
-          margin-top: 10px;
-          background-color: #fff;
-          padding-left: 0px;
-          li{
-            list-style: none;
-            padding: 5px 10px 5px 10px;
-            border-bottom: 1px solid #ddd;
-            a{
-              cursor: pointer;
-            }
-          }
 
+    }
+    @media screen and (max-width: 768px){
+      .info{
+        padding: 0px!important;
+        .detail{
+          margin-top: 20px!important;
+          .teacher{
+            display: none;
+          }
         }
+
       }
     }
     .info{
       padding: 0px 200px;
       .detail{
         margin-top: 100px;
+      }
+    }
+    @media screen and (max-width: 768px){
+      .list{
+        a{
+
+          .live_pic{
+            margin-right: 10px!important;
+            padding: 0px;
+          }
+          .live_txt{
+            padding: 0px;
+            //padding-left: 10px;
+            P{
+              display: block;
+            }
+          }
+        }
       }
     }
   }

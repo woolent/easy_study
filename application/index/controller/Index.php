@@ -79,7 +79,7 @@ class Index extends controller
                     $this->assign('class',$classes[0]);
                 }else{
                     session('class','');
-                    $this->assign('class',$class);
+                    $this->assign('class',$classes);
                 }
                 $this->assign('teacher',$result);
                 $this->assign('url',$url['teacher_url']);
