@@ -1,74 +1,157 @@
 .content{
-  .detail{
-    padding: 0px 100px;
-    margin-top: 50px;
-    display: flex;
 
-    ul{
-      background-color: #fff;
-      list-style: none;
-      padding: 0px;
-      width: 200px;
-      margin-bottom: 0px;
-      li{
-        height: 40px;
+  @media screen and (min-width: 768px){
+    .detail{
+      //padding: 0px 100px;
+      margin-top: 50px;
+      display: flex;
+
+      ul{
+        background-color: #fff;
         list-style: none;
+        padding: 0px;
+        //width: 150px;
+        width: 100%;
+        margin-bottom: 0px;
+        li{
+          height: 40px;
+          list-style: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+        }
+        .active{
+          background-color: #0088CC;
+          font-size: 14px;
+
+          a{
+            color: #fff;
+            border-radius: 5px;
+          }
+        }
+      }
+      .tab-content{
+        border: 1px solid #ddd;
+        width: 100%;
+        padding: 20px;
+
+        .tab-pane{
+          p{
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ddd;
+            margin: -20px -20px 20px -20px;
+            padding: 0px 20px;
+          }
+        }
+      }
+      .change{
+        height: 60px;
         display: flex;
         align-items: center;
-        justify-content: center;
-
-      }
-      .active{
-        background-color: #0088CC;
-        font-size: 14px;
-
-        a{
+        justify-content: flex-end;
+        button{
           color: #fff;
-          border-radius: 5px;
+          background-color: #317EF3;
+          margin-left: 20px;
         }
       }
-    }
-    .tab-content{
-      border: 1px solid #ddd;
-      width: 100%;
-      padding: 20px;
-      .tab-pane{
-        p{
-          height: 40px;
-          line-height: 40px;
-          border-bottom: 1px solid #ddd;
-          margin: -20px -20px 20px -20px;
-          padding: 0px 20px;
-        }
-      }
-    }
-    .change{
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      button{
-        color: #fff;
-        background-color: #317EF3;
-        margin-left: 20px;
-      }
-    }
 
-    table{
-      width: 100%;
-      border: 1px solid #ddd;
-      th{
-        text-align: center!important;
-        height: 40px;
-        background-color: #DAE2E5;
+      table{
+        width: 100%;
         border: 1px solid #ddd;
-      }
-      td{
-        border: 1px solid #ddd;
-        height: 40px;
-        text-align: center!important;
-        padding:0px 5px;
+        th{
+          text-align: center!important;
+          height: 40px;
+          background-color: #DAE2E5;
+          border: 1px solid #ddd;
+          line-height: 40px;
+        }
+        td{
+          border: 1px solid #ddd;
+          height: 40px;
+          text-align: center!important;
+          padding:8px 5px;
+        }
       }
     }
   }
+  @media screen and (max-width: 768px){
+      .detail{
+        padding-top: 5px;
+        .daohang{
+          border: none!important;
+          height: auto!important;
+          width: 100%;
+          margin-right: 0px!important;
+          ul{
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0px;
+            li{
+              height: 30px;
+              padding: 5px;
+              border-radius: 5px;
+              width: 100px;
+              text-align: center;
+              list-style-type: none;
+              background-color: #fff;
+              border:1px solid #ddd;
+              border-radius: 5px;
+              a{
+                color: #000;
+              }
+
+            }
+            .active{
+              border: none;
+              background-color:#317EF3;
+
+              a{
+                color: #fff;
+              }
+            }
+          }
+        }
+        .tab-content{
+          padding: 0px;
+          .tab-pane{
+            .title{
+              display: none;
+            }
+            .change{
+              height: 60px;
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              button{
+                color: #fff;
+                background-color: #317EF3;
+                margin-right: 20px;
+              }
+            }
+            .table{
+              border: 1px solid #ddd;
+              th{
+                text-align: center!important;
+                height: 40px;
+                background-color: #DAE2E5;
+                border: 1px solid #ddd;
+                line-height: 40px;
+              }
+              td{
+                border: 1px solid #ddd;
+                height: 40px;
+                text-align: center!important;
+                padding:8px 5px;
+                word-break: break-all;
+              }
+            }
+          }
+        }
+      }
+
+  }
+
 }

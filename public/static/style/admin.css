@@ -1,66 +1,138 @@
-.content .detail {
-  padding: 0px 100px;
-  margin-top: 50px;
-  display: flex;
+@media screen and (min-width: 768px) {
+  .content .detail {
+    margin-top: 50px;
+    display: flex;
+  }
+  .content .detail ul {
+    background-color: #fff;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .content .detail ul li {
+    height: 40px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content .detail ul .active {
+    background-color: #0088CC;
+    font-size: 14px;
+  }
+  .content .detail ul .active a {
+    color: #fff;
+    border-radius: 5px;
+  }
+  .content .detail .tab-content {
+    border: 1px solid #ddd;
+    width: 100%;
+    padding: 20px;
+  }
+  .content .detail .tab-content .tab-pane p {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    margin: -20px -20px 20px -20px;
+    padding: 0px 20px;
+  }
+  .content .detail .change {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .content .detail .change button {
+    color: #fff;
+    background-color: #317EF3;
+    margin-left: 20px;
+  }
+  .content .detail table {
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  .content .detail table th {
+    text-align: center!important;
+    height: 40px;
+    background-color: #DAE2E5;
+    border: 1px solid #ddd;
+    line-height: 40px;
+  }
+  .content .detail table td {
+    border: 1px solid #ddd;
+    height: 40px;
+    text-align: center!important;
+    padding: 8px 5px;
+  }
 }
-.content .detail ul {
-  background-color: #fff;
-  list-style: none;
-  padding: 0px;
-  width: 200px;
-  margin-bottom: 0px;
-}
-.content .detail ul li {
-  height: 40px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.content .detail ul .active {
-  background-color: #0088CC;
-  font-size: 14px;
-}
-.content .detail ul .active a {
-  color: #fff;
-  border-radius: 5px;
-}
-.content .detail .tab-content {
-  border: 1px solid #ddd;
-  width: 100%;
-  padding: 20px;
-}
-.content .detail .tab-content .tab-pane p {
-  height: 40px;
-  line-height: 40px;
-  border-bottom: 1px solid #ddd;
-  margin: -20px -20px 20px -20px;
-  padding: 0px 20px;
-}
-.content .detail .change {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.content .detail .change button {
-  color: #fff;
-  background-color: #317EF3;
-  margin-left: 20px;
-}
-.content .detail table {
-  width: 100%;
-  border: 1px solid #ddd;
-}
-.content .detail table th {
-  text-align: center!important;
-  height: 40px;
-  background-color: #DAE2E5;
-  border: 1px solid #ddd;
-}
-.content .detail table td {
-  border: 1px solid #ddd;
-  height: 40px;
-  text-align: center!important;
-  padding: 0px 5px;
+@media screen and (max-width: 768px) {
+  .content .detail {
+    padding-top: 5px;
+  }
+  .content .detail .daohang {
+    border: none!important;
+    height: auto!important;
+    width: 100%;
+    margin-right: 0px!important;
+  }
+  .content .detail .daohang ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px;
+  }
+  .content .detail .daohang ul li {
+    height: 30px;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    list-style-type: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .content .detail .daohang ul li a {
+    color: #000;
+  }
+  .content .detail .daohang ul .active {
+    border: none;
+    background-color: #317EF3;
+  }
+  .content .detail .daohang ul .active a {
+    color: #fff;
+  }
+  .content .detail .tab-content {
+    padding: 0px;
+  }
+  .content .detail .tab-content .tab-pane .title {
+    display: none;
+  }
+  .content .detail .tab-content .tab-pane .change {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .content .detail .tab-content .tab-pane .change button {
+    color: #fff;
+    background-color: #317EF3;
+    margin-right: 20px;
+  }
+  .content .detail .tab-content .tab-pane .table {
+    border: 1px solid #ddd;
+  }
+  .content .detail .tab-content .tab-pane .table th {
+    text-align: center!important;
+    height: 40px;
+    background-color: #DAE2E5;
+    border: 1px solid #ddd;
+    line-height: 40px;
+  }
+  .content .detail .tab-content .tab-pane .table td {
+    border: 1px solid #ddd;
+    height: 40px;
+    text-align: center!important;
+    padding: 8px 5px;
+    word-break: break-all;
+  }
 }

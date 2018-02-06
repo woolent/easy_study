@@ -38,8 +38,8 @@
                 <img src="__PUBLIC__/images/teacher.jpg" style="width: 150px;border-radius: 50%;border: 1px solid #ddd;margin-bottom: 20px;">
                 <p style="color: #fff"><span>用户名：</span><span>{$teacher['name']}</span></p>
                 <p style="color: #fff"><span>真实姓名：</span><span>{$teacher['real_name']}</span></p>
-                <p style="color: #fff"><span>积分：</span><span>{$teacher['point']}</span></p>
-                <p style="color: #fff"><span>登录口令：</span><span>{$token}</span></p>
+                <p style="color: #fff"><span>积分：</span><span>{$teacher['point']*0.8}</span></p>
+                <!--<p style="color: #fff"><span>登录口令：</span><span>{$token}</span></p>-->
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
@@ -66,8 +66,8 @@
                 </p>
                 <p><span>用户名：</span><span>{$teacher['name']}</span></p>
                 <p><span>真实姓名：</span><span>{$teacher['real_name']}</span></p>
-                <p><span>积分：</span><span>{$teacher['point']}</span></p>
-                <p><span>登录口令：</span><span>{$token}</span></p>
+                <p><span>积分：</span><span>{$teacher['point']*0.8}</span></p>
+                <!--<p><span>登录口令：</span><span>{$token}</span></p>-->
 
                 <div class="modal fade" id="changemessage" tabindex="-1" role="dialog" aria-labelledby="">
                     <div class="modal-dialog" role="document">
@@ -120,7 +120,7 @@
                     </div>
                     <div class="form-group text-left mt-20" style="display: flex;justify-content: center;align-items: center">
                         <input style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff;margin-right: 10px;" type="submit" name="login_submit" value="保存修改">
-                        <a href="{$url.'visible=true&nickname='.$teacher['name'].'&token='.$token}" target="_blank" style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff;margin-right: 10px;text-align: center;line-height: 40px;">点击进入直播</a>
+                        <a href="{$url.'visible=true&nickname='.$teacher['real_name'].'&token='.$token}" target="_blank" style="height: 40px;width: 100px;background-color: #317EF3;border-radius: 5px;color: #fff;margin-right: 10px;text-align: center;line-height: 40px;">点击进入直播</a>
                     </div>
                 </form>
                 {/if}

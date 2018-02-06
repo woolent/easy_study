@@ -50,7 +50,7 @@ class Index extends controller
                 session('name',$name);
                 session('real_name',$result['real_name']);
                 session('point',$result['point']);
-                $this->success('登陆成功','index','','1');
+                $this->success('登陆成功','index/admin/index','','1');
             }else{
                 $this->error('登陆失败，用户名或密码错误');
             }

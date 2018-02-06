@@ -87,7 +87,8 @@ class Student extends Controller{
             $url = Db::name('url_home')->where('id',$url_id)->find();
             //学生姓名
             $name = session('name');
-            $redirect_url = $url['student_url'].'visible=true&nickname='.$name.'&token='.$url['student_token'];
+            $real_name = session('student')['real_name'];
+            $redirect_url = $url['student_url'].'visible=true&nickname='.$real_name.'&token='.$url['student_token'];
             $this->redirect($redirect_url);
         }else{
             $student_new_point = $student_point-$point;
@@ -113,7 +114,8 @@ class Student extends Controller{
             $url = Db::name('url_home')->where('id',$url_id)->find();
             //学生姓名
             $name = session('name');
-            $redirect_url = $url['student_url'].'visible=true&nickname='.$name.'&token='.$url['student_token'];
+            $real_name = session('student')['real_name'];
+            $redirect_url = $url['student_url'].'visible=true&nickname='.$real_name.'&token='.$url['student_token'];
             $this->redirect($redirect_url);
         }
     }

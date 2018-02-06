@@ -37,7 +37,7 @@
                         {/if}
                         {if(count($myclass)!=0)}
                             {if(in_array($da['id'],$myclass))}
-                                <a target="_blank" href="{$da['student_url'].'visible=true&nickname='.$name.'&token='.$da['student_token']}" style="cursor: pointer">
+                                <a target="_blank" href="{$da['student_url'].'visible=true&nickname='.$student['real_name'].'&token='.$da['student_token']}" style="cursor: pointer">
                                     <div class="live_pic col-xs-5"><img src="__PUBLIC__/images/nopic.jpg" /></div>
                                     <div class="live_txt col-xs-7">
                                         <p>课程名称：{$da['class_name']}</p>
