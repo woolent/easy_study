@@ -30,7 +30,7 @@ class Index extends controller
             $this->assign('myclass',$array);
             $this->assign('id',$id);
             $this->assign('role',$role);
-            $this->assign('name',session('name'));
+            $this->assign('name',session('real_name'));
         }else{
             $this->assign('role','');
             $this->assign('name','');

@@ -23,6 +23,7 @@ class Student extends Controller{
         if($result){
             session('id',$result['id']);
             session('name',$name);
+            session('real_name',$result['real_name']);
             session('student',$result);
             session('role',$role);
 
